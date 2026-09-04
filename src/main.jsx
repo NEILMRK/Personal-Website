@@ -12,7 +12,7 @@ const graphicFiles = import.meta.glob('../optimized/graphic/**/*.webp', { eager:
 const humanize = (text) => text.replace(/\.[^.]+$/, '').replace(/,\s?(19|20)\d{2}$/, '').replace(/_/g, ' ')
 const artwork = Object.entries(artFiles).map(([path, image]) => { const [, year, name] = path.match(/artwork\\?\/(\d{4})\\?\/(.+)$/) || []; return { year, title: humanize(name), image } }).sort((a, b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title))
 const graphicProjects = Object.entries(graphicFiles).reduce((projects, [sourcePath, image]) => { const path = sourcePath.replaceAll('\\', '/'); const match = path.match(/graphic\/([^/]+), (\d{4})\//); if (!match) return projects; const [, title, year] = match; const key = `${year}-${title}`; projects[key] ||= { title, year, images: [] }; projects[key].images.push({ src:image, name:path.split('/').pop().replace('.webp','') }); return projects }, {})
-const footstepsOrder = ['封面1','front','书','page4','page5','page22','Frame 40 2','Frame 40 3']
+const footstepsOrder = ['封面1','front','book','page4','page5','page22','Frame 40 2','Frame 40 3']
 const orderedGraphics = Object.values(graphicProjects).map(project => ({ ...project, images:project.images.sort((a,b) => project.title === 'When the Footsteps Become Blurred on the Initial Map' ? footstepsOrder.indexOf(a.name) - footstepsOrder.indexOf(b.name) : a.name.localeCompare(b.name)) })).sort((a,b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title))
 
 function Link({ to, className, children }) { const go = event => { if (to.startsWith('#')) return; event.preventDefault(); window.dispatchEvent(new CustomEvent('site:navigate', { detail: to })) }; return <a href={to} className={className} onClick={go}>{children}</a> }
