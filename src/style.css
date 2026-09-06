@@ -31,5 +31,5 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .scroll-typography p{transition:none}
 
 /* Give the updated statement portrait a little more breathing room above. */
-.statement-photo{transform:translateY(70px)}
-@media(max-width:700px){.statement-photo{transform:translateY(32px)}}
+.statement-photo{transform:translateY(120px)}
+@media(max-width:700px){.statement-photo{transform:translateY(50px)}}
