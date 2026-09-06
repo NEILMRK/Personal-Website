@@ -26,3 +26,6 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 
 /* Soften the letterbox edges without cropping the complete hero frame. */
 @media(min-width:701px){.home-wash{background:linear-gradient(90deg,#000 0%,rgba(0,0,0,.92) 4%,rgba(0,0,0,.64) 9%,rgba(0,0,0,.13) 15%,rgba(0,0,0,.13) 85%,rgba(0,0,0,.64) 91%,rgba(0,0,0,.92) 96%,#000 100%)}}
+
+/* Opacity follows scroll directly so adjacent manifesto lines never ghost. */
+.scroll-typography p{transition:transform .72s cubic-bezier(.22,.61,.36,1)}
