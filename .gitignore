@@ -2,7 +2,7 @@ node_modules/
 dist/
 vite-out.log
 vite-err.log
-artwork/
+/artwork/
 Graphic work/
 CV/
 Statment/
