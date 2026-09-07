@@ -38,17 +38,23 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .type-caret{display:inline-block;width:1px;height:.76em;margin-left:.07em;vertical-align:-.04em;background:currentColor;animation:typeCaret .42s step-end infinite}
 @keyframes typeCaret{50%{opacity:0}}
-.manifesto-archive{background:#fff;color:#111;padding:clamp(72px,7vw,112px) 30px}
-.manifesto-archive>div{width:min(100%,1040px);margin:0 auto}
-.manifesto-archive header{display:flex;justify-content:space-between;border-top:1px solid #111;padding-top:10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
-.manifesto-archive header p,.manifesto-archive header span{margin:0}
-.manifesto-archive ol{display:grid;grid-template-rows:repeat(4,auto);grid-auto-flow:column;grid-auto-columns:1fr;column-gap:clamp(36px,7vw,96px);list-style:none;margin:clamp(44px,6vw,72px) 0 0;padding:0}
-.manifesto-archive li{display:grid;grid-template-columns:28px 1fr;gap:10px;border-top:1px solid #d7d7d4;padding:13px 0 22px}
-.manifesto-archive li>span{font-size:10px;color:#777;letter-spacing:.08em}
-.manifesto-archive li p{margin:0;font-size:clamp(17px,1.55vw,24px);line-height:1.05;letter-spacing:-.035em}
 .route-transition__content{display:flex;flex-direction:column;align-items:center;gap:24px}
 .route-transition__intro{width:0;max-width:calc(100vw - 40px);overflow:hidden;margin:0;border-right:1px solid #fff;color:#fff;white-space:nowrap;font-size:clamp(13px,1.15vw,18px);line-height:1.2;letter-spacing:.06em;animation:routeTyping 1.05s steps(22,end) .62s both,routeCaret .46s step-end .62s infinite}
 @keyframes routeTyping{to{width:22ch}}
 @keyframes routeCaret{50%{border-color:transparent}}
-@media(max-width:700px){.manifesto-archive{padding:64px 18px}.manifesto-archive ol{display:block;margin-top:42px}.manifesto-archive li{padding-bottom:18px}.manifesto-archive li p{font-size:18px}.route-transition__content{gap:18px}}
+@media(max-width:700px){.route-transition__content{gap:18px}}
 @media(prefers-reduced-motion:reduce){.type-caret{display:none}.route-transition__intro{width:auto;border:0;animation:none}}
+
+/* One typed statement resolves into a restrained, black-on-black poem screen. */
+.scroll-typography--poem{height:180svh}
+.manifesto-poem{position:absolute;inset:0;width:min(980px,calc(100% - 72px));height:max-content;margin:auto;display:flex;flex-direction:column;gap:clamp(7px,1.2vh,14px);pointer-events:none;will-change:transform,opacity}
+.scroll-typography .manifesto-poem p{position:relative;width:max-content;max-width:88%;margin:0;color:rgba(255,255,255,.88);font-size:clamp(18px,2vw,32px);line-height:1.08;letter-spacing:-.035em;text-align:left;transform:none!important;opacity:1!important;will-change:auto}
+.scroll-typography .manifesto-poem p:nth-child(1){margin-left:2%}
+.scroll-typography .manifesto-poem p:nth-child(2){margin-left:17%}
+.scroll-typography .manifesto-poem p:nth-child(3){margin-left:7%;margin-bottom:clamp(10px,2vh,22px)}
+.scroll-typography .manifesto-poem p:nth-child(4){margin-left:27%}
+.scroll-typography .manifesto-poem p:nth-child(5){margin-left:43%;margin-bottom:clamp(10px,2vh,22px)}
+.scroll-typography .manifesto-poem p:nth-child(6){margin-left:18%;font-size:clamp(23px,2.7vw,42px);color:#fff}
+.scroll-typography .manifesto-poem p:nth-child(7){margin-left:36%;color:rgba(255,255,255,.58)}
+@media(max-width:700px){.scroll-typography--poem{height:190svh}.manifesto-poem{width:calc(100% - 36px);gap:11px}.scroll-typography .manifesto-poem p{width:auto;max-width:94%;font-size:18px;line-height:1.12}.scroll-typography .manifesto-poem p:nth-child(2){margin-left:8%}.scroll-typography .manifesto-poem p:nth-child(3){margin-left:0}.scroll-typography .manifesto-poem p:nth-child(4){margin-left:10%}.scroll-typography .manifesto-poem p:nth-child(5){margin-left:22%}.scroll-typography .manifesto-poem p:nth-child(6){margin-left:5%;font-size:24px}.scroll-typography .manifesto-poem p:nth-child(7){margin-left:16%}}
+@media(prefers-reduced-motion:reduce){.scroll-typography--poem{height:auto}.manifesto-type{display:none}.manifesto-poem{position:relative;width:100%;height:auto;opacity:1!important;transform:none!important}}
