@@ -47,14 +47,16 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 
 /* One typed statement resolves into a restrained, black-on-black poem screen. */
 .scroll-typography--poem{height:180svh}
-.manifesto-poem{position:absolute;inset:0;width:min(980px,calc(100% - 72px));height:max-content;margin:auto;display:flex;flex-direction:column;gap:clamp(7px,1.2vh,14px);pointer-events:none;will-change:transform,opacity}
-.scroll-typography .manifesto-poem p{position:relative;width:max-content;max-width:88%;margin:0;color:rgba(255,255,255,.88);font-size:clamp(18px,2vw,32px);line-height:1.08;letter-spacing:-.035em;text-align:left;transform:none!important;opacity:1!important;will-change:auto}
-.scroll-typography .manifesto-poem p:nth-child(1){margin-left:2%}
-.scroll-typography .manifesto-poem p:nth-child(2){margin-left:17%}
-.scroll-typography .manifesto-poem p:nth-child(3){margin-left:7%;margin-bottom:clamp(10px,2vh,22px)}
-.scroll-typography .manifesto-poem p:nth-child(4){margin-left:27%}
-.scroll-typography .manifesto-poem p:nth-child(5){margin-left:43%;margin-bottom:clamp(10px,2vh,22px)}
-.scroll-typography .manifesto-poem p:nth-child(6){margin-left:18%;font-size:clamp(23px,2.7vw,42px);color:#fff}
-.scroll-typography .manifesto-poem p:nth-child(7){margin-left:36%;color:rgba(255,255,255,.58)}
-@media(max-width:700px){.scroll-typography--poem{height:190svh}.manifesto-poem{width:calc(100% - 36px);gap:11px}.scroll-typography .manifesto-poem p{width:auto;max-width:94%;font-size:18px;line-height:1.12}.scroll-typography .manifesto-poem p:nth-child(2){margin-left:8%}.scroll-typography .manifesto-poem p:nth-child(3){margin-left:0}.scroll-typography .manifesto-poem p:nth-child(4){margin-left:10%}.scroll-typography .manifesto-poem p:nth-child(5){margin-left:22%}.scroll-typography .manifesto-poem p:nth-child(6){margin-left:5%;font-size:24px}.scroll-typography .manifesto-poem p:nth-child(7){margin-left:16%}}
+.manifesto-poem{position:absolute;inset:0;width:min(1040px,calc(100% - 96px));height:max-content;margin:auto;display:flex;flex-direction:column;gap:clamp(8px,1.25vh,15px);pointer-events:none;will-change:transform,opacity}
+.scroll-typography .manifesto-poem p{position:relative;width:max-content;max-width:88%;min-height:1.08em;margin:0;color:rgba(255,255,255,.84);font-size:clamp(17px,1.7vw,28px);line-height:1.08;letter-spacing:-.032em;text-align:left;transform:none!important;opacity:1!important;will-change:auto}
+.poem-line-ghost{visibility:hidden}.poem-line-typed{position:absolute;inset:0 auto auto 0;white-space:nowrap}
+.manifesto-poem .type-caret{height:.82em;margin-left:.08em;opacity:.65}
+.scroll-typography .manifesto-poem p:nth-child(1){margin-left:5%}
+.scroll-typography .manifesto-poem p:nth-child(2){margin-left:19%}
+.scroll-typography .manifesto-poem p:nth-child(3){margin-left:10%;margin-bottom:clamp(17px,3vh,34px)}
+.scroll-typography .manifesto-poem p:nth-child(4){margin-left:34%}
+.scroll-typography .manifesto-poem p:nth-child(5){margin-left:49%;margin-bottom:clamp(18px,3.4vh,38px)}
+.scroll-typography .manifesto-poem p:nth-child(6){margin-left:22%;font-size:clamp(25px,2.7vw,43px);color:#fff;letter-spacing:-.045em}
+.scroll-typography .manifesto-poem p:nth-child(7){margin-left:42%;color:rgba(255,255,255,.5);font-size:clamp(16px,1.55vw,25px)}
+@media(max-width:700px){.scroll-typography--poem{height:190svh}.manifesto-poem{width:calc(100% - 36px);gap:11px}.scroll-typography .manifesto-poem p{width:max-content;max-width:96%;font-size:17px;line-height:1.12}.poem-line-typed{white-space:normal}.scroll-typography .manifesto-poem p:nth-child(2){margin-left:7%}.scroll-typography .manifesto-poem p:nth-child(3){margin-left:0}.scroll-typography .manifesto-poem p:nth-child(4){margin-left:8%}.scroll-typography .manifesto-poem p:nth-child(5){margin-left:20%}.scroll-typography .manifesto-poem p:nth-child(6){margin-left:3%;font-size:24px}.scroll-typography .manifesto-poem p:nth-child(7){margin-left:13%;font-size:16px}}
 @media(prefers-reduced-motion:reduce){.scroll-typography--poem{height:auto}.manifesto-type{display:none}.manifesto-poem{position:relative;width:100%;height:auto;opacity:1!important;transform:none!important}}
