@@ -5,14 +5,10 @@ import ArtCursor from './components/ArtCursor'
 import heroVideo from '../个人网站视频背景.mp4'
 import mark from '../主视觉logo.png'
 import portrait from '../optimized/portrait.webp'
-import affordableEnclave2 from '../optimized/artwork/2026/Affordable Enclave 2, 2026.webp'
-import affordableEnclave3 from '../optimized/artwork/2026/Affordable Enclave 3, 2026.webp'
-import subordinateWall2 from '../optimized/artwork/2026/The Subordinate Wall 2, 2026.webp'
 
 const artFiles = import.meta.glob('../optimized/artwork/**/*.webp', { eager: true, query: '?url', import: 'default' })
 const graphicFiles = import.meta.glob('../optimized/graphic/**/*.webp', { eager: true, query: '?url', import: 'default' })
 const humanize = (text) => text.replace(/\.[^.]+$/, '').replace(/,\s?(19|20)\d{2}$/, '').replace(/_/g, ' ')
-const artworkExtras = { 'Affordable Enclave':[affordableEnclave2, affordableEnclave3], 'The Subordinate Wall':[subordinateWall2] }
 const artworkStatements = {
   'Affordable Enclave': `Less than a third of the material in this sculpture comes from The Subordinate Wall, so it is a kind of cycle between works. My inspiration for this piece came from an architectural complex I passed through two years ago called Shipai Village. Located less than 2 kilometers from downtown Guangzhou, this complex was built by villagers who, because each plot of land was collectively owned and could not be bought or sold, spontaneously and haphazardly added houses, expanding outwards and upwards infinitely, constantly compressing the spacing between buildings.
 
@@ -25,7 +21,8 @@ The reason I deconstructed these photos is to eliminate the emotional and seriou
 
 Overall, I have this question: if all the complex events in the world are reduced to simple structures, is that a way to better understand them?`
 }
-const artwork = Object.entries(artFiles).map(([path, image]) => { const [, year, name] = path.match(/artwork\\?\/(\d{4})\\?\/(.+)$/) || [], title = humanize(name); return { year, title, image, images:[image, ...(artworkExtras[title] || [])], statement:artworkStatements[title] } }).sort((a, b) => b.year.localeCompare(a.year) || Number(a.year === '2026' && a.title === 'Attenuation Field') - Number(b.year === '2026' && b.title === 'Attenuation Field') || a.title.localeCompare(b.title))
+const artworkVariant = title => { const match = title.match(/^(Affordable Enclave|The Subordinate Wall)(?: (\d+))?$/); return match ? { title:match[1], order:Number(match[2] || 1) } : { title, order:1 } }
+const artwork = Object.values(Object.entries(artFiles).reduce((works, [path, image]) => { const [, year, name] = path.match(/artwork\\?\/(\d{4})\\?\/(.+)$/) || [], variant = artworkVariant(humanize(name)), key = `${year}-${variant.title}`; works[key] ||= { year, title:variant.title, images:[], statement:artworkStatements[variant.title] }; works[key].images.push({ image, order:variant.order }); return works }, {})).map(work => { const images = work.images.sort((a,b) => a.order - b.order).map(({image}) => image); return { ...work, image:images[0], images } }).sort((a, b) => b.year.localeCompare(a.year) || Number(a.year === '2026' && a.title === 'Attenuation Field') - Number(b.year === '2026' && b.title === 'Attenuation Field') || a.title.localeCompare(b.title))
 const graphicProjects = Object.entries(graphicFiles).reduce((projects, [sourcePath, image]) => { const path = sourcePath.replaceAll('\\', '/'); const match = path.match(/graphic\/([^/]+), (\d{4})\//); if (!match) return projects; const [, title, year] = match; const key = `${year}-${title}`; projects[key] ||= { title, year, images: [] }; projects[key].images.push({ src:image, name:path.split('/').pop().replace('.webp','') }); return projects }, {})
 const footstepsOrder = ['封面1','front','book','page4','page5','page22','Frame 40 2','Frame 40 3']
 const orderedGraphics = Object.values(graphicProjects).map(project => ({ ...project, images:project.images.sort((a,b) => project.title === 'When the Footsteps Become Blurred on the Initial Map' ? footstepsOrder.indexOf(a.name) - footstepsOrder.indexOf(b.name) : a.name.localeCompare(b.name)) })).sort((a,b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title))
