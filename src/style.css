@@ -66,3 +66,18 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .contact-socials .behance-icon{fill:currentColor!important;stroke:none!important}.contact-socials .behance-icon text{font:600 17px/1 "Helvetica Neue",Helvetica,Arial,sans-serif}
 .work-view__link{display:inline-block;margin-top:22px;padding-bottom:4px;border-bottom:1px solid currentColor;font-size:12px;letter-spacing:.02em;transition:opacity .2s}.work-view__link:hover{opacity:.5}
 @media(max-width:700px){.work-view>.dialog-close{right:18px}.work-view__arrow{width:42px;height:42px}.work-view__arrow--previous{left:10px}.work-view__arrow--next{right:10px}}
+
+/* Navigation uses the inverse of its current surface, including the dark home state. */
+.nav{--nav-hover-bg:#111;--nav-hover-ink:#fff}
+.nav nav a{display:inline-flex;align-items:center;margin:-9px -12px;padding:9px 12px;opacity:1;transition:background-color .24s ease,color .24s ease,opacity .24s ease}
+.nav nav a:hover{background:var(--nav-hover-bg);color:var(--nav-hover-ink);opacity:1}
+.nav-home.nav-floating{--nav-hover-bg:#fff;--nav-hover-ink:#111}
+
+/* Graphic images open into the same full-frame viewer as artwork. */
+.graphic-image{display:block;min-width:0;padding:0;border:0;background:none;cursor:pointer}
+.graphic-image img{display:block;transition:transform .35s ease,filter .35s ease}
+.graphic-image:hover img{transform:scale(.985);filter:brightness(.94)}
+.graphic-view{padding-bottom:60px}
+.graphic-view .work-view__media{background:#f5f5f3}
+.graphic-view .work-view__media img{background:#f5f5f3}
+@media(max-width:700px){.nav nav a{margin:-6px -8px;padding:6px 8px}.graphic-image:hover img{transform:none}}
