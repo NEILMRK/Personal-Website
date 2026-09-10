@@ -127,9 +127,9 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .year-rail{position:fixed;z-index:8;right:clamp(18px,2.4vw,46px);top:50%;width:86px;transform:translateY(-50%);display:flex;align-items:center;pointer-events:none}
 .year-rail__track{position:relative;width:100%;height:min(76svh,680px);display:flex;flex-direction:column;justify-content:space-between;align-items:center;cursor:ns-resize;pointer-events:auto;touch-action:none}
 .year-rail__track::before{content:"";position:absolute;top:4px;bottom:4px;left:50%;width:1px;background:#5f5f5d;transform:translateX(-50%)}
-.year-rail button{position:relative;z-index:1;min-width:52px;padding:6px 9px;border:0;background:var(--paper);color:#666;font:11px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.03em;cursor:pointer;transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease}
+.year-rail button{position:relative;z-index:1;width:76px;height:34px;padding:0;border:1px solid transparent;border-radius:999px;background:var(--paper);color:#666;font:11px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.03em;cursor:pointer;transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease}
 .year-rail button:hover{color:#111;transform:scale(1.04)}
-.year-rail button.is-active{padding:9px 15px;border:1px solid #111;border-radius:999px;background:#fff;color:#111;font-size:15px;letter-spacing:0}
+.year-rail button.is-active{padding:0;border-color:#111;background:#fff;color:#111;font-size:15px;letter-spacing:0}
 .year-rail button.is-active{cursor:grab;touch-action:none}.year-rail button.is-active:active{cursor:grabbing}
 html{scroll-behavior:smooth}html.has-year-rail{scrollbar-width:none}html.has-year-rail::-webkit-scrollbar{width:0;height:0}
 @media(max-width:700px){.year-rail{display:none}}
