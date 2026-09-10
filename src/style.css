@@ -81,3 +81,8 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .graphic-view .work-view__media{background:#f5f5f3}
 .graphic-view .work-view__media img{background:#f5f5f3}
 @media(max-width:700px){.nav nav a{margin:-6px -8px;padding:6px 8px}.graphic-image:hover img{transform:none}}
+
+/* Keep gallery controls in one steady viewport position while images change size. */
+.work-view__arrow{position:fixed;z-index:4;top:50svh}
+.work-view__arrow--previous{left:clamp(18px,3vw,56px)}
+.work-view__arrow--next{right:clamp(18px,3vw,56px)}
