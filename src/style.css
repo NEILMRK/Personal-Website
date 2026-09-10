@@ -130,7 +130,7 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .year-rail button{position:relative;z-index:1;width:76px;height:34px;padding:0;border:1px solid transparent;border-radius:999px;background:var(--paper);color:#666;font:11px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.03em;cursor:pointer;transition:color .22s ease,background-color .22s ease,border-color .22s ease,transform .22s ease}
 .year-rail button:hover{color:#111;transform:scale(1.04)}
 .year-rail button.is-active{padding:0;border-color:transparent;background:var(--paper);color:#111;font-size:11px;letter-spacing:.03em}
-.year-rail__handle{position:absolute!important;z-index:3;left:50%;width:76px!important;height:34px;transform:translate(-50%,-50%);border-color:#111!important;background:#fff!important;color:#111!important;font-size:15px!important;letter-spacing:0!important;cursor:grab!important;touch-action:none;will-change:top}
+.year-rail__handle{position:absolute!important;z-index:3;top:17px;left:50%;width:76px!important;height:34px;transform:translate(-50%,-50%);border-color:#111!important;background:#fff!important;color:#111!important;font-size:15px!important;letter-spacing:0!important;cursor:grab!important;touch-action:none;will-change:top}
 .year-rail__handle:hover{transform:translate(-50%,-50%)!important}
 .year-rail__handle:active{cursor:grabbing!important}
 html{scroll-behavior:smooth}html.has-year-rail{scrollbar-width:none}html.has-year-rail::-webkit-scrollbar{width:0;height:0}
