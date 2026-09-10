@@ -121,3 +121,14 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .graphic-view .work-view__meta{position:absolute;inset:auto 0 0;height:var(--graphic-meta);display:flex;align-items:center;overflow:hidden}
 .graphic-view .work-view__meta h2{margin:0}
 @media(max-width:700px){.graphic-view{--graphic-meta:118px}.graphic-view .work-view__meta{align-items:flex-start;padding-top:8px}}
+
+/* Fixed year index: a quiet, clickable line that mirrors the site's editorial grid. */
+.year-section,.graphic-project{scroll-margin-top:86px}
+.year-rail{position:fixed;z-index:8;right:clamp(18px,2.4vw,46px);top:50%;width:86px;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:14px;pointer-events:none}
+.year-rail__label{font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#888;writing-mode:vertical-rl;transform:rotate(180deg)}
+.year-rail__track{position:relative;width:100%;height:min(52svh,430px);display:flex;flex-direction:column;justify-content:space-between;align-items:center}
+.year-rail__track::before{content:"";position:absolute;top:5px;bottom:5px;left:50%;width:1px;background:#c8c8c5;transform:translateX(-50%)}
+.year-rail button{position:relative;z-index:1;min-width:46px;padding:5px 8px;border:0;background:var(--paper);color:#a0a0a0;font:10px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:.04em;cursor:pointer;pointer-events:auto;transition:color .2s ease,background-color .2s ease,border-color .2s ease,transform .2s ease}
+.year-rail button:hover{color:#111;transform:scale(1.04)}
+.year-rail button.is-active{padding:8px 13px;border:1px solid #111;border-radius:999px;background:#fff;color:#111;font-size:14px;letter-spacing:0}
+@media(max-width:700px){.year-rail{display:none}}
