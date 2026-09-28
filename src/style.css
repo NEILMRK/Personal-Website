@@ -72,6 +72,7 @@ html,body,#root,button,input,textarea,h1,h2,h3,h4,h5,h6,p,span,em,i,b,strong,blo
 .nav nav a{display:inline-flex;align-items:center;margin:-9px -12px;padding:9px 12px;opacity:1;transition:background-color .24s ease,color .24s ease,opacity .24s ease}
 .nav nav a:hover{background:var(--nav-hover-bg);color:var(--nav-hover-ink);opacity:1}
 .nav-home.nav-floating{--nav-hover-bg:#fff;--nav-hover-ink:#111}
+.nav-persistent:not(.nav-floating){position:sticky;top:0;background:#fff}
 
 /* Graphic images open into the same full-frame viewer as artwork. */
 .graphic-image{display:block;min-width:0;padding:0;border:0;background:none;cursor:pointer}
