@@ -250,3 +250,52 @@ html.portfolio-open{overflow:hidden}
   .portfolio-intro{padding:80px 0 100px}.portfolio-intro h1{font-size:66px}.portfolio-card{padding-bottom:86px}.portfolio-card__button figure{aspect-ratio:16/10}.portfolio-card__button figure>span{top:10px;left:10px;height:32px;min-width:62px}.portfolio-card__copy{grid-template-columns:minmax(0,1fr) 44px;gap:12px;padding-top:14px}.portfolio-card__copy h2{grid-column:1/-1;font-size:40px;margin-bottom:12px}.portfolio-card__copy p{font-size:11px}.portfolio-card__copy span{font-size:11px}.portfolio-reader figcaption{right:8px;bottom:7px}
 }
 @media(prefers-reduced-motion:reduce){.home-project-card figure img,.portfolio-card__button figure img{transition:none}.home-project-card:hover figure img,.portfolio-card__button:hover figure img{transform:none}}
+
+/* Admissions portfolio v3: concise index, new covers and a readable project viewer. */
+.home-name{--home-name-shift:0px;position:absolute;z-index:4;left:0;bottom:.03em;width:max-content;color:rgba(255,255,255,.28);font-size:clamp(118px,18.5vw,350px);line-height:.75;letter-spacing:-.085em;white-space:nowrap;pointer-events:none;transform:translate3d(calc(-2vw + var(--home-name-shift)),0,0);will-change:transform}
+.home-enter{z-index:6;display:flex;align-items:center;gap:34px;min-width:238px;padding:15px 16px 15px 21px;border:1px solid rgba(255,255,255,.78);border-radius:999px;background:rgba(0,0,0,.42);color:#fff;font-size:13px!important;line-height:1!important;text-transform:none;backdrop-filter:blur(12px);transition:background-color .25s ease,color .25s ease,transform .25s ease}
+.home-enter:hover{background:#fff;color:#111;transform:translateY(-3px)}
+.home-enter .home-enter__label{flex:1;font-size:13px}.home-enter .home-enter__arrow{display:grid;place-items:center;width:34px;height:34px;margin:0;border-radius:50%;background:#fff;color:#111;font-size:18px}
+
+.portfolio-page{max-width:1700px;padding-bottom:clamp(90px,9vw,150px)}
+.portfolio-intro{grid-template-columns:minmax(0,1.35fr) minmax(270px,.65fr);padding:clamp(66px,7vw,112px) 0 clamp(68px,7vw,110px)}
+.portfolio-intro h1{font-size:clamp(66px,8vw,132px);line-height:.78}
+.portfolio-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(42px,5vw,82px) clamp(28px,3.2vw,54px)}
+.portfolio-card{display:block;min-width:0;padding:0;border-top:1px solid #111;scroll-margin-top:80px}
+.portfolio-card__button{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(210px,.82fr);gap:clamp(18px,2vw,34px);align-items:stretch;width:100%;padding:18px 0 0;text-align:left}
+.portfolio-card__button figure{position:relative;width:100%;height:auto;aspect-ratio:4/3;margin:0;background:#dededc}
+.portfolio-card__button figure img{width:100%;height:100%;object-fit:cover;object-position:center}
+.portfolio-card__button figure>span{top:10px;left:10px;min-width:36px;width:36px;height:36px;padding:0;background:rgba(255,255,255,.9);font-size:10px}
+.portfolio-card__copy{display:flex;flex-direction:column;align-self:stretch;min-width:0;padding:0;border:0}
+.portfolio-card__copy .portfolio-card__year{margin:0 0 20px;color:#666;font-size:11px;letter-spacing:.06em}
+.portfolio-card__copy h2{margin:0;font-size:clamp(26px,2.45vw,43px);line-height:.94;letter-spacing:-.05em}
+.portfolio-card__copy dl{display:grid;gap:14px;margin:auto 0 22px}
+.portfolio-card__copy dl div{padding-top:10px;border-top:1px solid #d2d2cf}
+.portfolio-card__copy dt{margin:0 0 5px;color:#777;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.portfolio-card__copy dd{margin:0;font-size:11px;line-height:1.35}
+.portfolio-card__copy b{display:flex;justify-content:space-between;width:100%;margin:0;padding:10px 0 0;border-top:1px solid #111;font-size:11px;text-align:left}
+.portfolio-card__copy b span{margin:0;font-size:15px}
+.portfolio-card:nth-child(even) .portfolio-card__button figure,.portfolio-card:nth-child(even) .portfolio-card__copy{order:initial}
+
+.portfolio-overlay{overflow:hidden;background:#191919}
+.portfolio-overlay>header{min-height:92px;background:rgba(8,8,8,.92)}
+.portfolio-overlay__title{min-width:0}.portfolio-overlay__title p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.portfolio-overlay__title h2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.portfolio-reader-controls{display:flex;flex:0 0 auto;align-items:center;gap:6px}
+.portfolio-overlay>header .portfolio-reader-controls button{min-width:38px;height:38px;padding:0 11px;border-color:#555}
+.portfolio-overlay>header .portfolio-reader-controls button:nth-child(2){min-width:62px}
+.portfolio-overlay>header .portfolio-reader-controls .portfolio-close{min-width:78px;margin-left:12px;border-color:#999}
+.portfolio-reader,.portfolio-reader.is-longform{width:100%;height:calc(100vh - 92px);margin:0;overflow:auto;background:#292929}
+.portfolio-reader__canvas{min-width:75%;margin:0 auto;transition:width .25s cubic-bezier(.2,.7,.2,1)}
+.portfolio-reader figure{position:relative;margin:0;background:#fff}
+.portfolio-reader img{display:block;width:100%;height:auto;max-width:none}
+
+@media(max-width:1150px){
+  .portfolio-index{grid-template-columns:1fr;gap:68px}.portfolio-card__button{grid-template-columns:minmax(0,1.25fr) minmax(240px,.75fr)}
+}
+@media(max-width:700px){
+  .home-name{bottom:-.08em;font-size:31vw}.home-enter{right:18px;min-width:210px;padding:12px 13px 12px 18px}.home-enter .home-enter__arrow{width:30px;height:30px}
+  .portfolio-intro{padding:64px 0 76px}.portfolio-intro p{margin-top:34px}.portfolio-index{gap:70px}
+  .portfolio-card__button{grid-template-columns:1fr;padding-top:12px}.portfolio-card__copy{min-height:320px}.portfolio-card__copy .portfolio-card__year{margin-top:2px}.portfolio-card__copy h2{font-size:38px}.portfolio-card__copy dl{margin:46px 0 24px}
+  .portfolio-overlay>header{min-height:112px;align-items:flex-start;padding:12px}.portfolio-overlay__title{max-width:calc(100% - 138px)}.portfolio-overlay__title h2{font-size:16px}.portfolio-reader-controls{display:grid;grid-template-columns:36px 54px 36px;gap:4px}.portfolio-overlay>header .portfolio-reader-controls button{min-width:0;height:32px;padding:0}.portfolio-overlay>header .portfolio-reader-controls .portfolio-close{grid-column:1/-1;width:100%;min-width:0;height:30px;margin:0}.portfolio-reader,.portfolio-reader.is-longform{height:calc(100vh - 112px)}
+}
+@media(prefers-reduced-motion:reduce){.home-name{transform:translate3d(-2vw,0,0)!important}.portfolio-reader__canvas{transition:none}}
