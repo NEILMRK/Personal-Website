@@ -339,3 +339,27 @@ html.portfolio-open{overflow:hidden}
 @media(max-width:700px){
   .portfolio-page>.page-top{padding-top:0}.portfolio-intro{padding-top:64px}.portfolio-index{gap:76px}.portfolio-card__button{grid-template-columns:1fr}.portfolio-card__copy{min-height:300px}.portfolio-card__copy dl{margin-top:42px}.portfolio-card__copy b{min-width:180px}
 }
+
+/* Keep the home navigation in flow while its visual treatment eases into the floating state. */
+.nav-home.nav-persistent{
+  width:100%;
+  margin-inline:auto;
+  transition:top .5s cubic-bezier(.22,.61,.36,1),width .56s cubic-bezier(.22,.61,.36,1),height .5s cubic-bezier(.22,.61,.36,1),padding .5s cubic-bezier(.22,.61,.36,1),background-color .48s ease,color .4s ease,border-color .48s ease,border-radius .56s cubic-bezier(.22,.61,.36,1),box-shadow .56s ease,backdrop-filter .56s ease;
+}
+.nav-home.nav-persistent.nav-floating{
+  position:sticky;
+  top:12px;
+  left:auto;
+  margin-inline:auto;
+  transform:none;
+  animation:none;
+}
+.nav-home.nav-persistent.nav-floating+main{padding-top:0}
+
+@media(max-width:700px){
+  .nav-home.nav-persistent.nav-floating{top:8px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .nav-home.nav-persistent{transition:none}
+}
