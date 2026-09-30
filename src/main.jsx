@@ -77,6 +77,24 @@ const cv = [['Education',[['2022—2027','Kwantlen Polytechnic University, Surre
 function CV() { return <PageShell name="text-page"><div className="text-heading"><p>Curriculum Vitae</p><h1>Ruokun Ma<br/><i>(Neil)</i></h1><span>Visual Artist & Graphic Designer<br/>Surrey, BC / Guangzhou, CN</span></div><div className="cv-list">{cv.map(([label, rows]) => <section key={label}><h2>{label}</h2>{rows.map(([date, text]) => <p key={date+text}><span>{date}</span>{text}</p>)}</section>)}</div></PageShell> }
 function Statement() { return <PageShell name="statement-page"><div className="statement-photo"><img src={portrait} alt="Ruokun Ma"/></div><article><p className="label">Artist Statement</p><h1>Ruokun Ma<br/><i>(Neil)</i></h1><p>Ruokun Ma (Neil) is a Chinese-born visual arts practitioner whose work explores the relationships between consumer culture, identity, and spatial experience through institutional visual language. Born in Tianjin and raised in Guangzhou, his practice reconstructs urban and social conditions through processes of abstraction, translation, and systemization, often examining how seemingly ordinary experiences are shaped by larger systems.</p><p><i>Affordable Enclave</i> responds to Shipai Village in Guangzhou, an urban village shaped by informal construction and limited land ownership. Surrounded by high-rise developments, its low rents make it an important living space for migrant workers while positioning it at the margins of the urban economy.</p><p>I reconstructed this compressed environment using uniform foam core cubes, with less than a third of the material reused from a previous work. By reducing the village to modular units, the work emphasizes repetition, density, and spatial tension, reflecting on how affordable spaces and labor are standardized within urban development and consumer culture.</p><p><i>Urban Drift Guide</i> extends this interest to everyday movement, examining how urban exploration is shaped by recommendation systems, commercial spaces, and predetermined routes. Taking the form of a conventional travel guide, the project examines how recommendation systems, commercial infrastructures, and algorithmic navigation increasingly organize the experience of wandering.</p><p>Across these works, Ma considers how urban environments and everyday experiences are structured, standardized, and mediated by economic and institutional systems, questioning where autonomy remains within spaces that appear to offer freedom and choice.</p></article></PageShell> }
 function Portfolio() { const [active, setActive] = useState(null); useEffect(() => { const id = location.hash.slice(1); if (!id) return; const timer = setTimeout(() => document.getElementById(id)?.scrollIntoView({ block:'start' }), 80); return () => clearTimeout(timer) }, []); return <PageShell name="portfolio-page" persistentNav><div className="page-top"><p>Portfolio</p><span>Selected Works · 2025—2026</span></div><header className="portfolio-intro"><h1>Selected<br/>Portfolio</h1><p>Four projects across spatial research, publication, moving image, typography and interactive media.</p></header><div className="portfolio-index">{portfolioProjects.map((project,index) => <article className="portfolio-card" id={project.slug} key={project.slug}><button className="portfolio-card__button" onClick={() => setActive(project)} aria-label={`View ${project.title}`}><figure><img src={project.cover || project.images[0]} alt={`${project.title} portfolio cover`} loading={index < 2 ? 'eager' : 'lazy'} decoding="async"/><span>{String(index + 1).padStart(2,'0')}</span></figure><div className="portfolio-card__copy"><p className="portfolio-card__year">{project.year}</p><h2>{project.title}</h2><dl><div><dt>Medium</dt><dd>{project.medium}</dd></div><div><dt>Keywords</dt><dd>{project.keywords}</dd></div></dl><b>View complete project <span>↗</span></b></div></button></article>)}</div><PortfolioDialog project={active} close={() => setActive(null)}/></PageShell> }
+function PortfolioFeatureVideo({ project, link }) {
+  const video = useRef(null)
+  useEffect(() => {
+    const node = video.current
+    if (!node) return
+    const play = () => node.play().catch(() => {})
+    const observer = new IntersectionObserver(([entry]) => entry.isIntersecting ? play() : node.pause(), { threshold:.18 })
+    observer.observe(node)
+    play()
+    return () => { observer.disconnect(); node.pause() }
+  }, [project.featureVideo])
+  return <section className="portfolio-reader__video-page" aria-label="Urban Drift Guide video cover">
+    <video ref={video} autoPlay loop muted playsInline preload="auto"><source src={project.featureVideo} type="video/mp4"/></video>
+    <div className="portfolio-reader__video-shade" aria-hidden="true"/>
+    <div className="portfolio-reader__video-title"><h4>URBAN DRIFT GUIDE</h4><p>Urban Mapping Experiment</p></div>
+    {link && <a className="portfolio-reader__video-link" href={link.href} target="_blank" rel="noreferrer">vimeo.com/1216575116 <span>↗</span></a>}
+  </section>
+}
 function PortfolioDialog({ project, close }) {
   const [zoom, setZoom] = useState(100)
   useEffect(() => setZoom(100), [project])
@@ -105,14 +123,12 @@ function PortfolioDialog({ project, close }) {
       <section className="portfolio-reader__intro"><div><p>{project.year}</p><h3>{project.title}</h3></div><dl><div><dt>Medium</dt><dd>{project.medium}</dd></div><div><dt>Keywords</dt><dd>{project.keywords}</dd></div></dl><p>{project.description}</p></section>
       <div className="portfolio-reader__canvas" style={{ width:`${zoom}%` }}>
         {hasFeatureVideo && <>
-          <section className="portfolio-reader__video-page" aria-label="Urban Drift Guide video cover">
-            <video autoPlay loop muted playsInline preload="metadata" poster={project.cover}><source src={project.featureVideo} type="video/mp4"/></video>
-            <div className="portfolio-reader__video-shade" aria-hidden="true"/>
-            <div className="portfolio-reader__video-title"><h4>URBAN DRIFT GUIDE</h4><p>Urban Mapping Experiment</p></div>
-            {featureLink && <a className="portfolio-reader__video-link" href={featureLink.href} target="_blank" rel="noreferrer">vimeo.com/1216575116 <span>↗</span></a>}
-          </section>
-          <figure className="portfolio-reader__urban-remainder">
-            <img src={project.images[0]} alt={`${project.title}, complete portfolio after the video cover`} loading="eager" decoding="async"/>
+          <figure className="portfolio-reader__urban-before">
+            <img src={project.images[0]} alt={`${project.title}, portfolio pages before the video`} loading="eager" decoding="async"/>
+          </figure>
+          <PortfolioFeatureVideo project={project} link={featureLink}/>
+          <figure className="portfolio-reader__urban-after">
+            <img src={project.images[0]} alt={`${project.title}, portfolio pages after the video`} loading="lazy" decoding="async"/>
           </figure>
         </>}
         {!hasFeatureVideo && project.images.map((image,index) => <figure key={image}><img src={image} alt={`${project.title}, portfolio page ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async"/>{project.links?.filter(link => link.page === index).map((link,linkIndex) => <a className="portfolio-reader__link" href={link.href} target="_blank" rel="noreferrer" aria-label={link.label} title={link.label} key={`${link.href}-${linkIndex}`} style={{ left:`${link.left}%`, top:`${link.top}%`, width:`${link.width}%`, height:`${link.height}%` }}/>) }{project.images.length > 1 && <figcaption>{String(index + 1).padStart(2,'0')} / {String(project.images.length).padStart(2,'0')}</figcaption>}</figure>)}

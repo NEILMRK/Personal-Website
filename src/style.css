@@ -486,21 +486,24 @@ html.portfolio-open{overflow:hidden}
   transition:opacity .2s ease;
 }
 .portfolio-reader__video-link:hover{opacity:.68}
-.portfolio-reader figure.portfolio-reader__urban-remainder{
+.portfolio-reader figure.portfolio-reader__urban-before,
+.portfolio-reader figure.portfolio-reader__urban-after{
   position:relative;
   width:100%;
-  aspect-ratio:2/7;
   overflow:hidden;
   content-visibility:visible;
   contain:none;
 }
-.portfolio-reader__urban-remainder img{
+.portfolio-reader figure.portfolio-reader__urban-before{aspect-ratio:2/5}
+.portfolio-reader figure.portfolio-reader__urban-after{aspect-ratio:1/1}
+.portfolio-reader__urban-before img,
+.portfolio-reader__urban-after img{
   position:absolute;
   inset:0 0 auto;
   width:100%;
   height:auto;
-  transform:translateY(-12.5%);
 }
+.portfolio-reader__urban-after img{transform:translateY(-75%)}
 
 @media(max-width:700px){
   .portfolio-reader__video-page{min-height:min(62vh,430px);aspect-ratio:auto}
