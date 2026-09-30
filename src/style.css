@@ -363,3 +363,48 @@ html.portfolio-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){
   .nav-home.nav-persistent{transition:none}
 }
+
+/* Home hero hierarchy: a clear central portfolio entry and a quieter lower wordmark. */
+.home-page>.home-enter{
+  top:48%;
+  left:50%;
+  right:auto;
+  bottom:auto;
+  width:clamp(138px,11vw,174px);
+  height:clamp(138px,11vw,174px);
+  min-width:0;
+  padding:24px;
+  flex-direction:column;
+  justify-content:center;
+  gap:16px;
+  border-color:rgba(255,255,255,.86);
+  border-radius:50%;
+  background:rgba(0,0,0,.5);
+  text-align:center;
+  transform:translate(-50%,-50%);
+  backdrop-filter:blur(14px) saturate(115%);
+  box-shadow:0 12px 42px rgba(0,0,0,.24);
+  transition:background-color .35s ease,color .35s ease,transform .45s cubic-bezier(.22,.61,.36,1),box-shadow .45s ease;
+}
+.home-page>.home-enter:hover{
+  background:#fff;
+  color:#111;
+  transform:translate(-50%,-50%) scale(1.045);
+  box-shadow:0 18px 58px rgba(0,0,0,.3);
+}
+.home-page>.home-enter .home-enter__label{flex:0;font-size:14px;line-height:1.15}
+.home-page>.home-enter .home-enter__arrow{flex:0 0 auto;margin:0}
+.home-page>.home-name{
+  bottom:clamp(28px,4.2vh,64px);
+  font-size:clamp(92px,13vw,238px);
+  color:rgba(255,255,255,.22);
+  line-height:.72;
+  letter-spacing:-.068em;
+}
+.home-page>.home-name .home-name__letter.is-space{width:.34em}
+
+@media(max-width:700px){
+  .home-page>.home-enter{top:46%;right:auto;width:132px;height:132px;padding:19px;gap:12px}
+  .home-page>.home-enter .home-enter__label{font-size:12px}
+  .home-page>.home-name{bottom:28px;font-size:21vw;letter-spacing:-.06em}
+}
