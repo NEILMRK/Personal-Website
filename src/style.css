@@ -301,7 +301,7 @@ html.portfolio-open{overflow:hidden}
 .portfolio-reader__intro dt{margin-bottom:7px;color:#858581;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
 .portfolio-reader__intro dd{font-size:12px;line-height:1.45}
 .portfolio-reader__intro>p{max-width:57ch;font-size:clamp(14px,1.08vw,18px);line-height:1.55}
-.portfolio-reader__canvas{min-width:75%;margin:0 auto;transition:width .32s cubic-bezier(.2,.7,.2,1)}
+.portfolio-reader__canvas{min-width:75%;margin:0 auto;container-type:inline-size;transition:width .32s cubic-bezier(.2,.7,.2,1)}
 .portfolio-reader figure{position:relative;margin:0;background:#fff;content-visibility:auto;contain-intrinsic-size:1200px 800px}
 .portfolio-reader img{display:block;width:100%;height:auto;max-width:none}
 .portfolio-reader__link{position:absolute;z-index:2;display:block;min-height:6px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.28);cursor:pointer;transition:background-color .2s ease,box-shadow .2s ease}
@@ -460,19 +460,19 @@ html.portfolio-open{overflow:hidden}
 .portfolio-reader__video-title{
   position:absolute;
   z-index:2;
-  right:7.7%;
+  right:5.5%;
   bottom:20.5%;
-  width:min(34%,720px);
+  width:min(48cqw,760px);
   text-shadow:0 1px 18px rgba(0,0,0,.38);
 }
 .portfolio-reader__video-title h4,
 .portfolio-reader__video-title p{margin:0;font-weight:400}
-.portfolio-reader__video-title h4{font-size:clamp(28px,3.3vw,66px);line-height:.95;letter-spacing:.018em;white-space:nowrap}
-.portfolio-reader__video-title p{margin-top:.35em;font-size:clamp(15px,1.6vw,32px);line-height:1.15}
+.portfolio-reader__video-title h4{font-size:clamp(22px,3.3cqw,62px);line-height:.95;letter-spacing:.018em;white-space:nowrap}
+.portfolio-reader__video-title p{margin-top:.35em;font-size:clamp(13px,1.55cqw,29px);line-height:1.15}
 .portfolio-reader__video-link{
   position:absolute;
   z-index:3;
-  right:7.7%;
+  right:5.5%;
   bottom:5.3%;
   display:inline-flex;
   align-items:center;
@@ -480,7 +480,7 @@ html.portfolio-open{overflow:hidden}
   padding:4px 0 6px;
   border-bottom:1px solid rgba(255,255,255,.8);
   color:#fff;
-  font-size:clamp(12px,1.2vw,23px);
+  font-size:clamp(11px,1.05cqw,20px);
   line-height:1;
   text-shadow:0 1px 14px rgba(0,0,0,.7);
   transition:opacity .2s ease;
