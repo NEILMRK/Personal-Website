@@ -426,3 +426,86 @@ html.portfolio-open{overflow:hidden}
   .home-page>.home-enter .home-enter__arrow{right:12px;width:34px;height:34px}
   .home-page>.home-name{bottom:28px;font-size:21vw;letter-spacing:-.06em}
 }
+
+/* Urban Drift Guide opens with the supplied film while its original cover typography stays live. */
+.portfolio-reader__video-page{
+  position:relative;
+  width:100%;
+  aspect-ratio:2/1;
+  overflow:hidden;
+  isolation:isolate;
+  background:#080808;
+  color:#fff;
+}
+.portfolio-reader__video-page video{
+  position:absolute;
+  z-index:0;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  filter:none!important;
+  opacity:1;
+  mix-blend-mode:normal;
+}
+.portfolio-reader__video-shade{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.04) 42%,rgba(0,0,0,.58) 100%);
+}
+.portfolio-reader__video-title{
+  position:absolute;
+  z-index:2;
+  right:7.7%;
+  bottom:20.5%;
+  width:min(34%,720px);
+  text-shadow:0 1px 18px rgba(0,0,0,.38);
+}
+.portfolio-reader__video-title h4,
+.portfolio-reader__video-title p{margin:0;font-weight:400}
+.portfolio-reader__video-title h4{font-size:clamp(28px,3.3vw,66px);line-height:.95;letter-spacing:.018em;white-space:nowrap}
+.portfolio-reader__video-title p{margin-top:.35em;font-size:clamp(15px,1.6vw,32px);line-height:1.15}
+.portfolio-reader__video-link{
+  position:absolute;
+  z-index:3;
+  right:7.7%;
+  bottom:5.3%;
+  display:inline-flex;
+  align-items:center;
+  gap:.7em;
+  padding:4px 0 6px;
+  border-bottom:1px solid rgba(255,255,255,.8);
+  color:#fff;
+  font-size:clamp(12px,1.2vw,23px);
+  line-height:1;
+  text-shadow:0 1px 14px rgba(0,0,0,.7);
+  transition:opacity .2s ease;
+}
+.portfolio-reader__video-link:hover{opacity:.68}
+.portfolio-reader figure.portfolio-reader__urban-remainder{
+  position:relative;
+  width:100%;
+  aspect-ratio:2/7;
+  overflow:hidden;
+  content-visibility:visible;
+  contain:none;
+}
+.portfolio-reader__urban-remainder img{
+  position:absolute;
+  inset:0 0 auto;
+  width:100%;
+  height:auto;
+  transform:translateY(-12.5%);
+}
+
+@media(max-width:700px){
+  .portfolio-reader__video-page{min-height:min(62vh,430px);aspect-ratio:auto}
+  .portfolio-reader__video-title{right:18px;bottom:24%;left:18px;width:auto}
+  .portfolio-reader__video-title h4{font-size:clamp(27px,9vw,42px);white-space:normal}
+  .portfolio-reader__video-title p{font-size:15px}
+  .portfolio-reader__video-link{right:auto;bottom:8%;left:18px;font-size:12px}
+}
