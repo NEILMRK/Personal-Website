@@ -6,6 +6,7 @@ import heroVideo from '../optimized/hero-black-white.mp4'
 import mark from '../主视觉logo.png'
 import portrait from '../optimized/portrait.webp'
 import urbanDriftVideo from '../optimized/portfolio-video/urban-drift-guide.mp4'
+import attenuationFieldVideo from '../optimized/portfolio-video/attenuation-field.mp4'
 
 const artFiles = import.meta.glob('../optimized/artwork/**/*.webp', { eager: true, query: '?url', import: 'default' })
 const graphicFiles = import.meta.glob('../optimized/graphic/**/*.webp', { eager: true, query: '?url', import: 'default' })
@@ -45,11 +46,11 @@ const graphicProjects = Object.entries(graphicFiles).reduce((projects, [sourcePa
 const hiddenGraphicProjects = new Set(['When the Footsteps Become Blurred on the Initial Map','NIUMA WORKER SELF ESCAPE','Urban Drift Guide'])
 const orderedGraphics = Object.values(graphicProjects).filter(project => !hiddenGraphicProjects.has(project.title)).map(project => ({ ...project, images:project.images.sort((a,b) => a.name.localeCompare(b.name)) })).sort((a,b) => b.year.localeCompare(a.year) || a.title.localeCompare(b.title))
 const portfolioDetails = [
-  { slug:'attenuation-field', title:'Attenuation Field', year:'2026', medium:'Game design, video installation', keywords:'Visualization, noise pollution, personal experience', description:'This project explores noise as an invisible yet persistent form of environmental disturbance, focusing on its cumulative impact on attention and perception in everyday urban life. Through visualizations, generative spatial experiments and an interactive Unity simulation, noise becomes an embodied condition rather than a singular event.', links:[
+  { slug:'attenuation-field', title:'Attenuation Field', year:'2026', medium:'Game design, video installation', keywords:'Visualization, noise pollution, personal experience', description:'This project explores noise as an invisible yet persistent form of environmental disturbance, focusing on its cumulative impact on attention and perception in everyday urban life. Through visualizations, generative spatial experiments and an interactive Unity simulation, noise becomes an embodied condition rather than a singular event.', featureVideo:attenuationFieldVideo, featureLinkLabel:'youtube.com/watch?v=EQQmaUjrSYg', links:[
     { page:0, href:'https://www.youtube.com/watch?v=EQQmaUjrSYg', label:'Watch Attenuation Field on YouTube', left:1.9, top:98.48, width:11.4, height:.38 },
     { page:0, href:'https://ruokun-ma.itch.io/attenuation-field', label:'Open Attenuation Field on itch.io', left:1.9, top:98.88, width:14.2, height:.38 }
   ] },
-  { slug:'urban-drift-guide', title:'Urban Drift Guide', year:'2026', medium:'Brochure, mapping installation', keywords:'Critical design, urban wandering, consumer culture', description:'This project examines how contemporary urban wandering is increasingly shaped by digital platforms, recommendation systems and commercial structures. Travel guides, maps and navigation systems are transformed into a speculative guidebook and projection-based mapping installation.', featureVideo:urbanDriftVideo, links:[
+  { slug:'urban-drift-guide', title:'Urban Drift Guide', year:'2026', medium:'Brochure, mapping installation', keywords:'Critical design, urban wandering, consumer culture', description:'This project examines how contemporary urban wandering is increasingly shaped by digital platforms, recommendation systems and commercial structures. Travel guides, maps and navigation systems are transformed into a speculative guidebook and projection-based mapping installation.', featureVideo:urbanDriftVideo, featureLinkLabel:'vimeo.com/1216575116', links:[
     { page:0, href:'https://vimeo.com/1216575116?share=copy&fl=sv&fe=ci', label:'Watch Urban Drift Guide on Vimeo', left:60.525, top:74.137, width:31.799, height:.364 },
     { page:0, href:'https://vimeo.com/1216575116?share=copy&fl=sv&fe=ci', label:'Watch Urban Drift Guide on Vimeo', left:71.725, top:89.599, width:26.499, height:.303 }
   ] },
@@ -88,10 +89,10 @@ function PortfolioFeatureVideo({ project, link }) {
     play()
     return () => { observer.disconnect(); node.pause() }
   }, [project.featureVideo])
-  return <section className="portfolio-reader__video-page" aria-label="Urban Drift Guide video cover">
+  return <section className="portfolio-reader__video-page" aria-label={`${project.title} video`}>
     <video ref={video} autoPlay loop muted playsInline preload="auto"><source src={project.featureVideo} type="video/mp4"/></video>
     <div className="portfolio-reader__video-shade" aria-hidden="true"/>
-    {link && <a className="portfolio-reader__video-link" href={link.href} target="_blank" rel="noreferrer">vimeo.com/1216575116 <span>↗</span></a>}
+    {link && <a className="portfolio-reader__video-link" href={link.href} target="_blank" rel="noreferrer">{project.featureLinkLabel || link.label} <span>↗</span></a>}
   </section>
 }
 function PortfolioDialog({ project, close }) {
