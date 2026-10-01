@@ -431,7 +431,7 @@ html.portfolio-open{overflow:hidden}
 .portfolio-reader__video-page{
   position:relative;
   width:100%;
-  aspect-ratio:2/1;
+  aspect-ratio:16/9;
   overflow:hidden;
   isolation:isolate;
   background:#080808;
@@ -506,7 +506,7 @@ html.portfolio-open{overflow:hidden}
 .portfolio-reader__urban-after img{transform:translateY(-75%)}
 
 @media(max-width:700px){
-  .portfolio-reader__video-page{min-height:min(62vh,430px);aspect-ratio:auto}
+  .portfolio-reader__video-page{min-height:0;aspect-ratio:16/9}
   .portfolio-reader__video-title{right:18px;bottom:24%;left:18px;width:auto}
   .portfolio-reader__video-title h4{font-size:clamp(27px,9vw,42px);white-space:normal}
   .portfolio-reader__video-title p{font-size:15px}
