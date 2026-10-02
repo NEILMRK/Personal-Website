@@ -7,6 +7,7 @@ import mark from '../主视觉logo.png'
 import portrait from '../optimized/portrait.webp'
 import urbanDriftVideo from '../optimized/portfolio-video/urban-drift-guide.mp4'
 import attenuationFieldVideo from '../optimized/portfolio-video/attenuation-field.mp4'
+import niumaWorkerVideo from '../optimized/portfolio-video/niuma-worker-self-escape.mp4'
 
 const artFiles = import.meta.glob('../optimized/artwork/**/*.webp', { eager: true, query: '?url', import: 'default' })
 const graphicFiles = import.meta.glob('../optimized/graphic/**/*.webp', { eager: true, query: '?url', import: 'default' })
@@ -55,7 +56,7 @@ const portfolioDetails = [
     { page:0, href:'https://vimeo.com/1216575116?share=copy&fl=sv&fe=ci', label:'Watch Urban Drift Guide on Vimeo', left:71.725, top:89.599, width:26.499, height:.303 }
   ] },
   { slug:'footsteps', title:'When the Footsteps Become Blurred on the Initial Map', year:'2025', medium:'Graphic design, typography, installation', keywords:'Family trajectory, spatial archive, emotional geography', description:'Through first-hand interviews with relatives, this project traces how social and economic change shaped one family across two Chinese cities. Maps, archival materials and typographic systems visualize migration as both a spatial trajectory and an emotional geography.' },
-  { slug:'niuma-worker-self-escape', title:'NIUMA Worker Self Escape', year:'2025', medium:'Graphic design, typography, video editing', keywords:'Work culture, labor culture, migrant workers', description:'Inspired by the Chinese internet meme “NIUMA,” this project examines the emotional condition of contemporary workers. Familiar office scenes and cow-horse characters become a satirical visual system about repetitive labor, workplace alienation and collective self-mockery.', links:[
+  { slug:'niuma-worker-self-escape', title:'NIUMA Worker Self Escape', year:'2025', medium:'Graphic design, typography, video editing', keywords:'Work culture, labor culture, migrant workers', description:'Inspired by the Chinese internet meme “NIUMA,” this project examines the emotional condition of contemporary workers. Familiar office scenes and cow-horse characters become a satirical visual system about repetitive labor, workplace alienation and collective self-mockery.', featureVideo:niumaWorkerVideo, featureLinkLabel:'youtube.com/watch?v=sJnP0FkTgf0', links:[
     { page:0, href:'https://www.youtube.com/watch?v=sJnP0FkTgf0', label:'Watch NIUMA Worker Self Escape on YouTube', left:60.375, top:70.498, width:15.147, height:.315 }
   ] }
 ]
