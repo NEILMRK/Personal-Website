@@ -123,11 +123,8 @@ function PortfolioDialog({ project, close }) {
     <div className={`portfolio-reader ${project.images.length === 1 ? 'is-longform' : ''}`}>
       <section className="portfolio-reader__intro"><div><p>{project.year}</p><h3>{project.title}</h3></div><dl><div><dt>Medium</dt><dd>{project.medium}</dd></div><div><dt>Keywords</dt><dd>{project.keywords}</dd></div></dl><p>{project.description}</p></section>
       <div className="portfolio-reader__canvas" style={{ width:`${zoom}%` }}>
-        {hasFeatureVideo && <>
-          <PortfolioFeatureVideo project={project} link={featureLink}/>
-          <figure><img src={project.images[0]} alt={`${project.title}, complete portfolio`} loading="eager" decoding="async"/>{project.links?.filter(link => link.page === 0).map((link,linkIndex) => <a className="portfolio-reader__link" href={link.href} target="_blank" rel="noreferrer" aria-label={link.label} title={link.label} key={`${link.href}-${linkIndex}`} style={{ left:`${link.left}%`, top:`${link.top}%`, width:`${link.width}%`, height:`${link.height}%` }}/>)}</figure>
-        </>}
-        {!hasFeatureVideo && project.images.map((image,index) => <figure key={image}><img src={image} alt={`${project.title}, portfolio page ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async"/>{project.links?.filter(link => link.page === index).map((link,linkIndex) => <a className="portfolio-reader__link" href={link.href} target="_blank" rel="noreferrer" aria-label={link.label} title={link.label} key={`${link.href}-${linkIndex}`} style={{ left:`${link.left}%`, top:`${link.top}%`, width:`${link.width}%`, height:`${link.height}%` }}/>) }{project.images.length > 1 && <figcaption>{String(index + 1).padStart(2,'0')} / {String(project.images.length).padStart(2,'0')}</figcaption>}</figure>)}
+        {hasFeatureVideo && <PortfolioFeatureVideo project={project} link={featureLink}/>} 
+        {project.images.map((image,index) => <figure key={image}><img src={image} alt={`${project.title}, portfolio page ${index + 1}`} loading={index === 0 ? 'eager' : 'lazy'} decoding="async"/>{project.links?.filter(link => link.page === index).map((link,linkIndex) => <a className="portfolio-reader__link" href={link.href} target="_blank" rel="noreferrer" aria-label={link.label} title={link.label} key={`${link.href}-${linkIndex}`} style={{ left:`${link.left}%`, top:`${link.top}%`, width:`${link.width}%`, height:`${link.height}%` }}/>) }{project.images.length > 1 && <figcaption>{String(index + 1).padStart(2,'0')} / {String(project.images.length).padStart(2,'0')}</figcaption>}</figure>)}
       </div>
     </div>
   </div>
